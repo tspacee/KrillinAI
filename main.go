@@ -35,6 +35,8 @@ func main() {
 
 	if err := application.Run(); err != nil {
 		fmt.Fprintf(os.Stderr, "application exited with error: %v\n", err)
-		os.Exit(1)
+		// Use exit code 2 to distinguish application runtime errors from
+		// startup/init errors (which use exit code 1)
+		os.Exit(2)
 	}
 }
