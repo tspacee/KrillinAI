@@ -38,8 +38,6 @@ func main() {
 		// Use exit code 2 to distinguish application runtime errors from
 		// startup/init errors (which use exit code 1).
 		// See: https://tldp.org/LDP/abs/html/exitcodes.html for conventions.
-		// Note: on some systems sysexits.h defines EX_SOFTWARE=70 for internal
-		// software errors, but 2 is more portable and widely understood.
 		os.Exit(2)
 	}
 }
