@@ -36,7 +36,8 @@ func main() {
 	if err := application.Run(); err != nil {
 		fmt.Fprintf(os.Stderr, "application exited with error: %v\n", err)
 		// Use exit code 2 to distinguish application runtime errors from
-		// startup/init errors (which use exit code 1)
+		// startup/init errors (which use exit code 1).
+		// See: https://tldp.org/LDP/abs/html/exitcodes.html for conventions.
 		os.Exit(2)
 	}
 }
