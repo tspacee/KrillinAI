@@ -36,6 +36,9 @@ func main() {
 
 	// Record startup time so we can report uptime on clean shutdown.
 	startTime := time.Now()
+	// NOTE(personal): also log startup time to stderr so it's easy to correlate
+	// with shutdown messages when tailing logs.
+	fmt.Fprintf(os.Stderr, "KrillinAI started at %s\n", startTime.Format(time.RFC1123Z))
 
 	if err := application.Run(); err != nil {
 		fmt.Fprintf(os.Stderr, "application exited with error: %v\n", err)
