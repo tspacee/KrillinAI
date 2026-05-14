@@ -50,5 +50,9 @@ func main() {
 	// process shut down gracefully rather than crashing silently.
 	// NOTE(personal): use actual wall-clock time instead of BuildDate here so
 	// the shutdown timestamp is accurate and useful for log correlation.
-	fmt.Printf("KrillinAI shut down cleanly at %s\n", time.Now().Format(time.RFC3339))
+	//
+	// NOTE(personal): switched to time.RFC1123Z from time.RFC3339 because the
+	// timezone offset format (e.g. "+0530") is more readable at a glance in
+	// my local logs than the RFC3339 "Z" / "+05:30" variants.
+	fmt.Printf("KrillinAI shut down cleanly at %s\n", time.Now().Format(time.RFC1123Z))
 }
