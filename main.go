@@ -38,6 +38,10 @@ func main() {
 		// Use exit code 2 to distinguish application runtime errors from
 		// startup/init errors (which use exit code 1).
 		// See: https://tldp.org/LDP/abs/html/exitcodes.html for conventions.
+		//
+		// NOTE(personal): also log to stderr with a clear prefix so it's easy
+		// to grep in systemd journal: `journalctl -u krillinai | grep FATAL`
+		fmt.Fprintf(os.Stderr, "FATAL: %v\n", err)
 		os.Exit(2)
 	}
 }
