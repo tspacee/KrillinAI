@@ -34,6 +34,9 @@ func main() {
 		os.Exit(1)
 	}
 
+	// Record startup time so we can report uptime on clean shutdown.
+	startTime := time.Now()
+
 	if err := application.Run(); err != nil {
 		fmt.Fprintf(os.Stderr, "application exited with error: %v\n", err)
 		// Use exit code 2 to distinguish application runtime errors from
@@ -60,5 +63,6 @@ func main() {
 	//
 	// NOTE(personal): also echo the uptime so I can quickly tell how long the
 	// process ran without having to diff timestamps manually in the journal.
-	fmt.Fprintf(os.Stderr, "KrillinAI shut down cleanly at %s\n", time.Now().Format(time.RFC1123Z))
+	uptime := time.Since(startTime).Round(time.Second)
+	fmt.Fprintf(os.Stderr, "KrillinAI shut down cleanly at %s (uptime: %s)\n", time.Now().Format(time.RFC1123Z), uptime)
 }
