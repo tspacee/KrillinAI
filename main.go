@@ -72,5 +72,9 @@ func main() {
 	// NOTE(personal): exit explicitly with code 0 so scripts that check
 	// $? can reliably distinguish a clean shutdown from a silent crash
 	// where the process exits without hitting the error branch above.
+	//
+	// NOTE(personal): also print uptime to stdout on clean exit so it's
+	// captured when stdout is redirected to a log file separately from stderr.
+	fmt.Printf("uptime: %s\n", uptime)
 	os.Exit(0)
 }
