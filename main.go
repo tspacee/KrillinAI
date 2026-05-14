@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/krillinai/KrillinAI/internal/app"
 	"github.com/krillinai/KrillinAI/internal/config"
@@ -47,7 +48,7 @@ func main() {
 
 	// Clean exit — print a short message so it's obvious in logs that the
 	// process shut down gracefully rather than crashing silently.
-	// NOTE(personal): I prefer a timestamp here so I can correlate with other
-	// service logs without having to rely solely on the journal timestamp.
-	fmt.Printf("KrillinAI shut down cleanly at %s\n", BuildDate)
+	// NOTE(personal): use actual wall-clock time instead of BuildDate here so
+	// the shutdown timestamp is accurate and useful for log correlation.
+	fmt.Printf("KrillinAI shut down cleanly at %s\n", time.Now().Format(time.RFC3339))
 }
