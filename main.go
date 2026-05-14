@@ -47,5 +47,7 @@ func main() {
 
 	// Clean exit — print a short message so it's obvious in logs that the
 	// process shut down gracefully rather than crashing silently.
-	fmt.Println("KrillinAI shut down cleanly.")
+	// NOTE(personal): I prefer a timestamp here so I can correlate with other
+	// service logs without having to rely solely on the journal timestamp.
+	fmt.Printf("KrillinAI shut down cleanly at %s\n", BuildDate)
 }
