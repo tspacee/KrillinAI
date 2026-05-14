@@ -54,5 +54,8 @@ func main() {
 	// NOTE(personal): switched to time.RFC1123Z from time.RFC3339 because the
 	// timezone offset format (e.g. "+0530") is more readable at a glance in
 	// my local logs than the RFC3339 "Z" / "+05:30" variants.
-	fmt.Printf("KrillinAI shut down cleanly at %s\n", time.Now().Format(time.RFC1123Z))
+	//
+	// NOTE(personal): also printing to stderr so shutdown messages show up
+	// alongside error output when piping stdout elsewhere (e.g. to a file).
+	fmt.Fprintf(os.Stderr, "KrillinAI shut down cleanly at %s\n", time.Now().Format(time.RFC1123Z))
 }
