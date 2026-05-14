@@ -57,5 +57,8 @@ func main() {
 	//
 	// NOTE(personal): also printing to stderr so shutdown messages show up
 	// alongside error output when piping stdout elsewhere (e.g. to a file).
+	//
+	// NOTE(personal): also echo the uptime so I can quickly tell how long the
+	// process ran without having to diff timestamps manually in the journal.
 	fmt.Fprintf(os.Stderr, "KrillinAI shut down cleanly at %s\n", time.Now().Format(time.RFC1123Z))
 }
