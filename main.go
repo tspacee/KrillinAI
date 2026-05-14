@@ -44,4 +44,8 @@ func main() {
 		fmt.Fprintf(os.Stderr, "FATAL: %v\n", err)
 		os.Exit(2)
 	}
+
+	// Clean exit — print a short message so it's obvious in logs that the
+	// process shut down gracefully rather than crashing silently.
+	fmt.Println("KrillinAI shut down cleanly.")
 }
