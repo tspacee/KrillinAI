@@ -68,4 +68,9 @@ func main() {
 	// process ran without having to diff timestamps manually in the journal.
 	uptime := time.Since(startTime).Round(time.Second)
 	fmt.Fprintf(os.Stderr, "KrillinAI shut down cleanly at %s (uptime: %s)\n", time.Now().Format(time.RFC1123Z), uptime)
+
+	// NOTE(personal): exit explicitly with code 0 so scripts that check
+	// $? can reliably distinguish a clean shutdown from a silent crash
+	// where the process exits without hitting the error branch above.
+	os.Exit(0)
 }
